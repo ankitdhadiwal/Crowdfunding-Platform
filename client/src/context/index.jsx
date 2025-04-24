@@ -18,28 +18,28 @@ export const StateContextProvider = ({ children }) => {
     // Publish Campaign function
     const publishCampaign = async (form) => {
         try {
-            // Parsing target as Ether
-            const parsedTarget = ethers.utils.parseEther(form.target.toString());
-            // Parsing deadline to UNIX timestamp
-            const parsedDeadline = Math.floor(new Date(form.deadline).getTime() / 1000);
-
-            // Contract call
+            //const parsedTarget = ethers.utils.parseEther(form.target.toString());
+           // const parsedDeadline = Math.floor(new Date(form.deadline).getTime() / 1000);
+            console.log("Target entered by user: ", form.target);
             const data = await createCampaign({
                 args: [
-                    address,          // user address
-                    form.title,       // title of campaign
-                    form.description, // description
-                    parsedTarget,     // target value in Ether
-                    parsedDeadline,   // deadline in UNIX timestamp
-                    form.image        // image URL
+                    address,
+                    form.title,
+                    form.description,
+                    form.target,
+                    //parsedTarget,
+                   // parsedDeadline,
+                   form.deadline,
+                    form.image
                 ]
             });
-
+    
             console.log("Contract call success", data);
         } catch (error) {
             console.log("Contract call failure", error);
         }
     };
+    
 
     const getCampaigns = async () => {
         const campaigns = await contract.call('getCampaigns');

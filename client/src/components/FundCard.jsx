@@ -13,8 +13,27 @@ const FundCard = ({owner, title, description, target, deadline, amountCollected,
             <img src={image} alt="fund" className="w-full h-[158px] object-cover rounded-[15px]" />
 
             <div className="flex flex-col p-4">
-                <div>
+                <div className="flex flex-row items-centermb-[18px]">
                     <img src={tagType} alt="tag" className="w-[17px] h-[17px] object-contain" />
+                    <p className="ml-[12px] mt-[12px] font-epilogue font-medium text-[12px] text-[#808191]">Education</p>
+                </div>
+
+                <div className="block">
+                    <h3 className='font-epilogue font-semibold text-[16px] text-white text-left leading-[26px] truncate'>{title}</h3>
+                    <p className="mt-[5px] font-epilogue font-normal text-[#808191] text-left 
+                    leading-[18px] truncate">{description}</p>
+                </div>
+
+                <div className="flex justify-between flex-wrap mt-[15px] gap-2">
+                    <div className="flex flex-col">
+                        <h4 className='font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px]'>
+                        {Number(amountCollected).toFixed(2)} ETH
+
+                        </h4>
+                        <p>  
+                            Raised of {Number(target).toFixed(2)} ETH
+                        </p>
+                    </div>
                 </div>
 
             </div>
